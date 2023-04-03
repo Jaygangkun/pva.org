@@ -1,0 +1,87 @@
+<footer class="footer">
+	<div class="footer-info">
+		<div class="container">
+			<div class="logo">
+				<a href="{{get_home_url()}}"><img src="{{get_field('footer_logo','options')['url']}}" alt="{{get_field('footer_logo','options')['alt']}}"></a>
+			</div>
+			<div class="row">
+				<div class="col-lg-4">
+					<a href="https://pva.tfaforms.net/12" class="btn btn-large primary-background standard-width white" style="margin-bottom:15px">Get Updates from PVA</a>
+					<a href="{{get_field('contact_button', 'options')}}" class="btn btn-large primary-background standard-width white" style="margin-bottom:15px">CONTACT US</a>
+					{!!get_field('footer_middle','options')!!}
+					<span class="copyrights">©{{date('Y')}}<a href="{{get_home_url()}}">Paralyzed Veterans of America</a>. All Rights Reserved.</span>
+				</div>
+				<div class="col-lg-4">
+					<ul class="social-networks list-unstyled">
+					@foreach(get_field('social','options') as $social)
+						<li><a href="{{$social['app_link']}}" target="_blank" class="{{$social['app_name']}}"><i class="icon-{{$social['app_name']}}"></i></a></li>
+					@endforeach
+					</ul>
+					<ul class="list-unstyled logo-list">
+						@foreach(get_field('awards','options') as $awards)
+						<li>
+							@if($awards['award_link'])
+							<a href="{{$awards['award_link']}}" target="_blank">
+							@endif
+								<img src="{{$awards['award_image']['url']}}" alt="">
+							@if($awards['award_link'])
+							</a>
+							@endif
+						</li>
+						@endforeach
+					</ul>
+				</div>
+
+				<div class="col-lg-4">
+					<h3><a href="/find-support">{{get_field('find_support_head','options')}}</a></h3>
+					<ul class="list-unstyled info-list">
+						@foreach(get_field('support','options') as $support)
+						<li>
+							<span class="title">{{$support['support_title']}}</span>
+							<a href="tel:{{$support['support_phone']}}">{{$support['support_phone']}}</a>@if($support['phone_ext'])<span style="position:relative; left: -19px;margin-right: -18px;">, {{$support['phone_ext']}}@endif
+						</span></li>
+						@endforeach
+					</ul>
+				<!--	<h3 style="margin:0"><span>{{get_field('download_app_title','options')}}</span></h3>
+					<ul class="list-unstyled btn-list">
+						@foreach(get_field('download_apps','options') as $app)
+						<li><a href="{{$app['download_app_link']}}" target="_blank"><img src="{{$app['download_app_image']['url']}}" alt="{{$app['download_app_image']['alt']}}"></a></li>
+						@endforeach
+					</ul> -->
+					<p>{!!get_field('footer_right','options')!!}</p>
+					<ul class="list-unstyled footer-links">
+						@foreach(get_field('footer_right_links','options') as $footer_links)
+						<li><a href="{{$footer_links['footer_right_link']['url']}}">{{$footer_links['footer_right_link']['title']}}</a></li>
+						@endforeach
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!---<div class="footer-content">
+		<div class="container">
+			<div class="row">
+				<div class="footer-logo col-lg-4">
+					<div class="logo">
+						<a href="{{get_home_url()}}"><img src="{{get_field('footer_logo','options')['url']}}" alt="{{get_field('footer_logo','options')['alt']}}"></a>
+					</div>
+					<span class="btn-widget text-center">
+					  <a href="https://pva.tfaforms.net/12" class="btn btn-large secondary-background standard-width white" target="_blank">Get Updates from PVA</a>
+					</span>
+					<span class="copyrights">©{{date('Y')}}<a href="{{get_home_url()}}">Paralyzed Veterans of America</a>. All Rights Reserved.</span>
+				</div>
+				<div class="contact-info col-lg-4">
+					{!!get_field('footer_middle','options')!!}
+				</div>
+				<div class="footer-links col-lg-4">
+					<p>{!!get_field('footer_right','options')!!}</p>
+					<ul class="list-unstyled footer-links">
+						@foreach(get_field('footer_right_links','options') as $footer_links)
+						<li><a href="{{$footer_links['footer_right_link']['url']}}">{{$footer_links['footer_right_link']['title']}}</a></li>
+						@endforeach
+					</ul>
+				</div>
+			</div>
+		</div>                                                         
+	</div>-->
+</footer>

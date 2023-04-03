@@ -1,0 +1,21 @@
+@php 
+global $post;
+@endphp
+@extends('views.layouts.main')
+
+@section('content')
+<main class="main">
+    <div class="container">
+            @include('views.partials.breadcrumbs')
+            <div class="row">
+                <div class="col-lg-8">
+                    @include('views.pages.search-form')
+                </div>
+                <div class="col-lg-4">
+                    @include('views.partials.publications-sidebar')
+                </div>
+            </div>
+    </div>
+    
+</main>
+@endsection

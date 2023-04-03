@@ -1,0 +1,24 @@
+@php 
+global $our_members_class;
+@endphp
+@extends('views.layouts.main')
+
+@section('content')
+@while (have_posts()) @php the_post() @endphp
+    <main class="main">
+		<div>
+		    {!!the_content()!!}
+		    @if(isset($our_members_class) && is_object($our_members_class))
+			    <!-- Used to display a hero image or slider on the landing page -->
+			    @include('views.partials.our-members.visual-slider', compact('our_members_class'))
+
+				<!-- Search -->
+				@include('views.partials.our-members.search-bar', compact('our_members_class'))
+
+				<!-- Themed Sections -->
+				@include('views.partials.our-members.sections', compact('our_members_class'))
+			@endif
+		</div>
+	</main>
+@endwhile
+@endsection

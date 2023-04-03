@@ -1,0 +1,137 @@
+[{
+	"id": 1630689319259,
+	"visibility": true,
+	"collapse": false,
+	"settings": {
+		"row_padding": {
+			"md": {
+				"top": "25px",
+				"bottom": "25px",
+				"left": "0px",
+				"right": "0px"
+			}
+		},
+		"row_screen": "row-stretch",
+		"row_opacity": 0.4
+	},
+	"layout": "100",
+	"columns": [{
+		"id": 1630689319258,
+		"class_name": 100,
+		"visibility": true,
+		"settings": {
+			"col_custom_width": {
+				"md": "100",
+				"sm": 100,
+				"xs": 100
+			}
+		},
+		"addons": [{
+			"id": 1630689809275,
+			"name": "pva_heading",
+			"visibility": true,
+			"settings": {
+				"title": "QUICK LINKS",
+				"title_selector": "h2",
+				"title_link": {
+					"link": "",
+					"window": false,
+					"nofolow": false
+				},
+				"align": {
+					"md": "center"
+				},
+				"style": "dark_blue",
+				"title_color": {
+					"colorType": "color",
+					"clip": true,
+					"colorColor": ""
+				},
+				"title_link_hcolor": "",
+				"title_fontstyle": {
+					"fontFamily": "Titillium Web",
+					"fontSize": {
+						"md": "26px",
+						"sm": "",
+						"xs": ""
+					},
+					"lineHeight": {
+						"md": "1px",
+						"sm": "",
+						"xs": ""
+					},
+					"fontWeight": "700",
+					"textTransform": "",
+					"fontStyle": "",
+					"letterSpacing": {
+						"md": "",
+						"sm": "",
+						"xs": ""
+					},
+					"itemOpenFontStyle2": 1
+				},
+				"initialize_empty": "0",
+				"id": 1630689809275
+			},
+			"htmlContent": "<div id=\"wppb-addon-1630689809275\" class=\"clearfix\" ></div>",
+			"type": "addon"
+		}, {
+			"id": 1630689855813,
+			"name": "wppb_text_block",
+			"visibility": true,
+			"settings": {
+				"text": "<table style=\"width: 600px;\" border=\"0\" cellspacing=\"5\" cellpadding=\"10\"><tbody><tr><td>- <a href=\"#covidresp\">PVA's Response</a>      </td><td>- <a href=\"#memberguidance\">Member Guidance</a></td></tr><tr><td>- <a href=\"#covidres\">Resource Center</a>      </td><td>- <a href=\"#mhcovid\">Mental Health Resources</a></td></tr><tr><td>- <a href=\"#suph\">Support Hotlines</a>      </td><td>- <a href=\"#covidfaq\">FA</a><a href=\"#covidfaq\">Qs</a></td></tr><tr><td>- <a href=\"#covidblogs\">PVA Staff Blogs</a>      </td><td>- <a href=\"/stories-from-the-inside/\">Stories from the Inside</a></td></tr><tr><td>- <a href=\"/covid-19/covid-19-policy-updates/\">Policy Updates</a></td><td><a href=\"/getattachment/COVID-19/12-February-2021-VHA-COVID-19-Update.pdf?lang=en-US\">- </a><a href=\"/getattachment/COVID-19/12-February-2021-VHA-COVID-19-Update.pdf?lang=en-US\">VHA Covid Response Update 2/12/21</a></td></tr><tr><td><a href=\"/getattachment/COVID-19/12-February-2021-Full-Table.pdf?lang=en-US\">- </a><a href=\"/getattachment/COVID-19/12-February-2021-Full-Table.pdf?lang=en-US\">VHA Covid Response Data 2/12/21</a></td><td> </td></tr></tbody></table><p><a name=\"covidresp\"></a></p>",
+				"drop_cap": "",
+				"align": "",
+				"color": "",
+				"text_fontstyle": {
+					"fontFamily": "",
+					"fontSize": {
+						"md": "14px",
+						"sm": "",
+						"xs": ""
+					},
+					"lineHeight": {
+						"md": "",
+						"sm": "",
+						"xs": ""
+					},
+					"fontWeight": "400",
+					"textTransform": "",
+					"fontStyle": "",
+					"letterSpacing": {
+						"md": "",
+						"sm": "",
+						"xs": ""
+					}
+				},
+				"drop_color": "",
+				"drop_fontstyle": {
+					"fontFamily": "",
+					"fontSize": {
+						"md": "50px",
+						"sm": "",
+						"xs": ""
+					},
+					"lineHeight": {
+						"md": "",
+						"sm": "",
+						"xs": ""
+					},
+					"fontWeight": "400",
+					"textTransform": "",
+					"fontStyle": "",
+					"letterSpacing": {
+						"md": "",
+						"sm": "",
+						"xs": ""
+					}
+				},
+				"drop_padding": "",
+				"id": 1630689855813
+			},
+			"htmlContent": "<div id=\"wppb-addon-1630689855813\" class=\"clearfix\" ></div>",
+			"type": "addon"
+		}]
+	}]
+}]

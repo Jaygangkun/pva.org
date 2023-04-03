@@ -1,0 +1,134 @@
+@extends('views.layouts.main')
+
+@section('content')
+    <main class="main">
+        @include('views.partials.header-search-member')
+        <div class="container">
+            @include('views.partials.breadcrumbs')
+        </div>
+
+        
+        <section>
+          <div class="container">
+            <div class="row inner-bottom-xs">
+              <div class="col-md-12 search-results">
+                <div class="navbar-form search results">
+                    <form role="search" action="@php echo site_url('/'); @endphp" method="get" id="searchform">
+                        <div id="" class="searchBox">
+                        
+                        <label for="" id="" style="display:none;">Search for:</label>
+                        <input name="s" type="text" maxlength="1000" id="" class="form-control">
+                        <input type="hidden" name="post_type" value="member" /> 
+                        <input type="submit" name="" value=">" id="" class="btn btn-default btn-submit icon-right-open">
+                        
+                        <div id="p_lt_WebPartZone4_zP_pH_p_lt_WebPartZone3_zSearch_SmartSearchBox_pnlPredictiveResultsHolder" class="predictiveSearchHolder"></div>
+
+                        </div>
+                    </form>
+                </div>
+
+        <div id="p_lt_WebPartZone4_zP_pH_p_lt_WebPartZone3_zSearch_SmartSearchResults_srchResults_pnlSearchResults">
+            
+
+           
+
+        
+        @php if ( have_posts() ) : while ( have_posts() ) : the_post(); @endphp      
+        <div class="article-summary-content search" @php the_ID(); @endphp>
+          <div class="search-listing-image">
+            <a href="@php the_permalink(); @endphp" title="@php the_title(); @endphp">
+
+              @php if ( has_post_thumbnail()) : @endphp
+
+
+              @php $featured_img_url = get_the_post_thumbnail_url(get_the_ID());   @endphp
+              <img class="img-responsive" src="@php echo $featured_img_url; @endphp" alt="" title="">
+
+              @php else: @endphp
+
+              <img class="img-responsive" src="" alt="" title="">
+
+              @php endif; @endphp
+
+
+
+            </a>
+          </div>
+          <div class="search-listing-content">
+            <h2><a href="@php the_permalink(); @endphp">@php the_title(); @endphp</a></h2>
+            <p>@php
+            $member_intro_text = get_field('member_intro_text', get_the_ID());
+            if(!empty($member_intro_text))
+            {
+              echo $member_intro_text;
+            }
+            else
+            {
+              the_excerpt();
+            }
+            @endphp</p> 
+          </div>
+        </div>
+        @php endwhile; @endphp
+        @php endif; @endphp
+
+
+        </div>
+
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+        
+
+    </main>
+@endsection
+
+@section ('no-content')
+    <main class="main">
+        @include('views.partials.header-search-member')
+        <div class="container">
+            @include('views.partials.breadcrumbs')
+        </div>
+
+        
+        <section>
+          <div class="container">
+            <div class="row inner-bottom-xs">
+              <div class="col-md-12 search-results">
+                <div class="navbar-form search results">
+                    <form role="search" action="@php echo site_url('/'); @endphp" method="get" id="searchform">
+                        <div id="" class="searchBox">
+                        
+                        <label for="" id="" style="display:none;">Search for:</label>
+                        <input name="s" type="text" maxlength="1000" id="" class="form-control">
+                        <input type="hidden" name="post_type" value="member" /> 
+                        <input type="submit" name="" value=">" id="" class="btn btn-default btn-submit icon-right-open">
+                        
+                        <div id="p_lt_WebPartZone4_zP_pH_p_lt_WebPartZone3_zSearch_SmartSearchBox_pnlPredictiveResultsHolder" class="predictiveSearchHolder"></div>
+
+                        </div>
+                    </form>
+                </div>
+
+        <div id="p_lt_WebPartZone4_zP_pH_p_lt_WebPartZone3_zSearch_SmartSearchResults_srchResults_pnlSearchResults">
+  
+    
+    
+    <span id="p_lt_WebPartZone4_zP_pH_p_lt_WebPartZone3_zSearch_SmartSearchResults_srchResults_lblNoResults" class="ContentLabel">Sorry but we could not find what you were looking for. Please try again.</span>
+    
+
+</div>
+
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+        
+
+    </main>
+@endsection

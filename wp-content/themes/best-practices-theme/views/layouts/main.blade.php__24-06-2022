@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        @section('head')
+            <meta charset="{{bloginfo( 'charset' )}}">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+            <link rel="profile" href="http://gmpg.org/xfn/11">
+
+            {!! wp_head() !!}
+            <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Source+Sans+Pro:wght@200;300;400;600;700&family=Titillium+Web:wght@200;300;400;700;900&display=swap" rel="stylesheet">
+            <script src="https://kit.fontawesome.com/74d2999c27.js" crossorigin="anonymous"></script>
+            <link rel="stylesheet" href="{{public_path('bundle.css')}}">
+            <link rel="stylesheet" href="{{mix('main.css')}}">
+			<script src="https://www.googleoptimize.com/optimize.js?id=OPT-M3S4XMF"></script>
+        @show
+    </head>
+
+    <body {{body_class()}}>
+        <div class="wrapper">
+            @section('header')
+                @include('views.partials.header')
+            @show
+
+            @yield('pre-content')
+
+            @section('the-loop')
+                @if (have_posts())
+                    @yield('content')
+                @else
+                    @yield('no-content')
+                @endif
+            @show
+
+            @yield('post-content')
+
+            @section('footer')
+                @include('views.partials.footer')
+            @show
+
+            @section('scripts')
+                <script src="{{public_path('bundle.js')}}"></script>
+                <script src="{{mix('main.js')}}"></script>
+                <script src="{{public_path('jquery.cookie.js')}}"></script>
+                <script>
+                    $(document).ready(function(){
+						var show_home_popup = $.cookie('show_home_popup');
+						var do_show_popup = false;
+						var pathname = document.location.pathname;
+						
+						if(typeof show_home_popup == 'undefined' || show_home_popup == null || show_home_popup == "" || show_home_popup*1 == 0)
+						{
+							do_show_popup = true;
+						}
+						
+						if(  
+							do_show_popup && 
+							pathname != "/ways-to-give/service-matters/" && 
+							pathname != "/ways-to-give/service-matters" && 
+							pathname != "/research-resources/tips-tools-resources/" && 
+							pathname != "/research-resources/tips-tools-resources" && 
+							pathname != "/find-support/national-service-office/" && 
+							pathname != "/women-veterans-quiz/" && 
+							pathname != "/women-veterans-quiz" && 
+							pathname != "/everyday-battles-game/" && 
+							pathname != "/everyday-battles-game" && 
+							pathname != "/vietnam-veterans-card/" && 
+							pathname != "/vietnam-veterans-card" && 
+							pathname != "/vietnam-veterans-quiz" && 
+							pathname != "/thank-you-survey-april-2022" && 
+							pathname != "/thank-you-survey-april-2022/" && 
+							pathname != "/military-child-quiz-2022/" && 
+							pathname != "/military-child-quiz-2022" && 
+							pathname != "/military-children-card-2022/" && 
+							pathname != "/military-children-card-2022" && 
+							pathname != "/find-support/national-service-office" &&
+							pathname != "/anniversary-quiz-2022/" && 
+							pathname != "/anniversary-quiz-2022" 
+							pathname != "/army-birthday-quiz-22/" 
+							pathname != "/army-birthday-quiz-22" 
+						)
+						{
+							$("#modalHome").fadeIn("slow");
+						}
+						
+                        $("#closepopup").click(function() {
+                            $("#modalHome").fadeOut("slow");
+                            $.cookie('show_home_popup', 1, { expires: 365, path: '/' });
+                        });
+                        $('.custom-donation-amount').on('keyup',function(){
+	                        if ($('.custom-donation-url').attr('href').includes('&amt=')) {
+		                        console.log('this');
+								var newCustomUrl = $('.custom-donation-url').attr('href').substring(0, $('.custom-donation-url').attr('href').indexOf('&amt='));
+								$('.custom-donation-url').attr('href',newCustomUrl + '&amt=' + $(this).val());
+	                        }
+	                        else {
+		                        $('.custom-donation-url').attr('href',$('.custom-donation-url').attr('href') + '&amt=' + $(this).val());
+	                        }
+                        });
+                        $('.close-giving').on('click',function(){
+	                        $('#giving-cta').addClass('fade');
+	                        $.cookie('giving-popup', 1, { expires: 365, path: '/' });
+	                        setTimeout(function(){ $('#giving-cta').removeClass('show'); }, 2000);
+                        });
+						if ($.cookie('giving-popup') != 1) {
+							$('#giving-cta').addClass('show');
+						}
+						$('.close-informed').on('click',function(){
+							$('.w-form').addClass('fade');
+							$('.w-form').hide();
+							$.cookie('informed-popup', 1, { expires: 365, path: '/' });
+							setTimeout(function(){ $('.w-form').hide(); }, 2000);
+						});
+						if ($.cookie('informed-popup') != 1) {
+							$('.w-form').show();
+						} else {
+							$('.w-form').hide();
+						}
+						if ($(window).width() < 768) {
+							$('.custom-donation-amount').val(50);
+							$('.custom-donation-url').attr('href',$('.custom-donation-url').attr('href') + '&amt=50');
+						}
+                    });
+
+                </script>
+                <?php wp_footer(); ?>
+            @show
+        </div>
+		@if(get_field('show_home_popup','options'))
+        <div id="black">
+            <div id="modalHome" title="Donate Now. --" style="display:none;">
+                <div id="closeIcon">
+                    <a href="javascript:void(0);" id="closepopup"><img id="closeIconPic" src="{{public_path('images/close-icon2.png')}}"></a>
+                </div>
+				<a href="{{get_field('home_popup_link','options')}}" target="_blank">
+                <img id="modalImage" src="{{get_field('home_popup_desktop_image','options')['url']}}">
+				</a>
+				<a href="{{get_field('home_popup_link','options')}}" target="_blank">
+                <img id="mobileImage" src="{{get_field('home_popup_mobile_image','options')['url']}}">
+				</a>
+            </div>
+        </div>
+        @endif 
+		
+		@if($_SERVER['REQUEST_URI'] == '/research-resources/')
+		
+		<style>
+			.captcha {
+				padding-bottom: 1em !important;
+			}
+			.wForm .captcha .oneField {
+				margin: 0;
+				padding: 0;
+			}
+			.w-form {
+				background: #b3272d;
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				z-index: 999999999999;
+				display:none;
+			}
+			.w-form .oneField input,.w-form .required:not(.choices):not(select):not(.wfAutosuggest) {
+				padding: 26px 2.5rem!important;
+				margin-top: 13px !important;
+				margin-right: 10px !important;
+				border: 2px solid #951f25 !important;
+				width: 100%;
+			}
+			.w-form .oneField input#submit_button {
+				padding: 13px 30px !important;
+				margin-top: 10px !important;
+				min-height: 0px !important;
+				display: inline-block !important;
+				height: 58px;
+				margin-left: 7px;
+				text-transform: uppercase;
+				font-weight: bold;
+				border-color: white !important;
+				color: white;
+				background-color: #b3272d;
+				border: 0px;
+			}
+			#tfa_6-D {
+				margin-top: 0px;
+			}
+			.w-form h2 {
+				margin-bottom: 0px !important;
+				overflow: hidden;
+				color: white;
+			}
+			.w-form .close-informed {position:absolute;top:10px;right:10px;width:20px;height:20px;text-align: center;border-radius: 20px;background:rgb(135 25 31);font-size: 14px;}
+			.w-form .close-informed i {color:white;opacity: .6;position: relative;top:-3px;}
+			
+			@media screen and (max-width: 991px) {
+				.captcha {
+					margin-bottom: 0px !important;
+					padding-bottom: 0px !important;
+					margin-top: 10px !important;
+				}
+				
+				.w-form .oneField input#submit_button {
+					padding: 13px 30px !important;
+					margin-top: 10px !important;
+					min-height: 0px !important;
+					display: inline-block !important;
+					height: 58px;
+					margin-left: 0px;
+					text-transform: uppercase;
+					font-weight: bold;
+					border-color: white !important;
+					color: white;
+					background-color: #b3272d;
+					border: 0px;
+					margin-bottom: 8px;
+				}
+				
+				.w-form .oneField input, .w-form .required:not(.choices):not(select):not(.wfAutosuggest) {
+					padding: 26px 2.5rem!important;
+					margin-top: 13px !important;
+					margin-right: 10px !important;
+					display: block;
+					border: 2px solid #951f25 !important;
+					width: 100%;
+				}
+				
+				#tfa_6-D {
+					margin-top: 0px;
+					flex-direction: column;
+				} 
+				
+			}
+			
+/* 			.captcha {
+				margin-bottom: 0px !important;
+				padding-bottom: 0px !important;
+				margin-top: 10px !important;
+			}
+			
+			.w-form .oneField input#submit_button {
+				padding: 13px 30px !important;
+				margin-top: 10px !important;
+				min-height: 0px !important;
+				display: inline-block !important;
+				height: 58px;
+				margin-left: 0px;
+				text-transform: uppercase;
+				font-weight: bold;
+				border-color: white !important;
+				color: white;
+				background-color: #b3272d;
+				border: 0px;
+				margin-bottom: 8px;
+			}
+			
+			.w-form {
+				background: #b3272d;
+				position: fixed;
+				bottom: 20px;
+				width: 400px;
+				border-radius: 10px;
+				max-width: 100%;
+				right: 20px;
+				display:none;
+			}
+			
+			.w-form .oneField input, .w-form .required:not(.choices):not(select):not(.wfAutosuggest) {
+				padding: 26px 2.5rem!important;
+				margin-top: 13px !important;
+				margin-right: 10px !important;
+				display: block;
+				border: 2px solid #951f25 !important;
+				width: 100%;
+			}
+			
+			#tfa_6-D {
+				margin-top: 0px;
+				flex-direction: column;
+			} */
+			
+		</style>
+		<script type="text/javascript">
+			// initialize our variables
+			var captchaReady = 0;
+			var wFORMSReady = 0;
+
+			// when wForms is loaded call this
+			var wformsReadyCallback = function () {
+				// using this var to denote if wForms is loaded
+				wFORMSReady = 1;
+				// call our recaptcha function which is dependent on both
+				// wForms and an async call to google
+				// note the meat of this function wont fire until both
+				// wFORMSReady = 1 and captchaReady = 1
+				onloadCallback();
+			}
+			var gCaptchaReadyCallback = function() {
+				// using this var to denote if captcha is loaded
+				captchaReady = 1;
+				// call our recaptcha function which is dependent on both
+				// wForms and an async call to google
+				// note the meat of this function wont fire until both
+				// wFORMSReady = 1 and captchaReady = 1
+				onloadCallback();
+			};
+
+			// add event listener to fire when wForms is fully loaded
+			document.addEventListener("wFORMSLoaded", wformsReadyCallback);
+
+			var enableSubmitButton = function() {
+				var submitButton = document.getElementById('submit_button');
+				var explanation = document.getElementById('disabled-explanation');
+				if (submitButton != null) {
+					submitButton.removeAttribute('disabled');
+					if (explanation != null) {
+						explanation.style.display = 'none';
+					}
+				}
+			};
+			var disableSubmitButton = function() {
+				var submitButton = document.getElementById('submit_button');
+				var explanation = document.getElementById('disabled-explanation');
+				if (submitButton != null) {
+					submitButton.disabled = true;
+					if (explanation != null) {
+						explanation.style.display = 'block';
+					}
+				}
+			};
+
+			// call this on both captcha async complete and wforms fully
+			// initialized since we can't be sure which will complete first
+			// and we need both done for this to function just check that they are
+			// done to fire the functionality
+			var onloadCallback = function () {
+				// if our captcha is ready (async call completed)
+				// and wFORMS is completely loaded then we are ready to add
+				// the captcha to the page
+				if (captchaReady && wFORMSReady) {
+													grecaptcha.enterprise.render('g-recaptcha-render-div', {
+													'sitekey': '6LfMg_EaAAAAAMhDNLMlgqDChzmtYHlx1yU2y7GI',
+						'theme': 'light',
+						'size': 'normal',
+						'callback': 'enableSubmitButton',
+						'expired-callback': 'disableSubmitButton'
+					})
+					var oldRecaptchaCheck = parseInt('1');
+					if (oldRecaptchaCheck === -1) {
+						var standardCaptcha = document.getElementById("tfa_captcha_text");
+						standardCaptcha = standardCaptcha.parentNode.parentNode.parentNode;
+						standardCaptcha.parentNode.removeChild(standardCaptcha);
+					}
+
+					if (!wFORMS.instances['paging']) {
+						document.getElementById("g-recaptcha-render-div").parentNode.parentNode.parentNode.style.display = "block";
+						//document.getElementById("g-recaptcha-render-div").parentNode.parentNode.parentNode.removeAttribute("hidden");
+					}
+					document.getElementById("g-recaptcha-render-div").getAttributeNode('id').value = 'tfa_captcha_text';
+
+					var captchaError = '';
+					if (captchaError == '1') {
+						var errMsgText = 'The CAPTCHA was not completed successfully.';
+						var errMsgDiv = document.createElement('div');
+						errMsgDiv.id = "tfa_captcha_text-E";
+						errMsgDiv.className = "err errMsg";
+						errMsgDiv.innerText = errMsgText;
+						var loc = document.querySelector('.g-captcha-error');
+						loc.insertBefore(errMsgDiv, loc.childNodes[0]);
+
+						/* See wFORMS.behaviors.paging.applyTo for origin of this code */
+						if (wFORMS.instances['paging']) {
+							var b = wFORMS.instances['paging'][0];
+							var pp = base2.DOM.Element.querySelector(document, wFORMS.behaviors.paging.CAPTCHA_ERROR);
+							if (pp) {
+								var lastPage = 1;
+								for (var i = 1; i < 100; i++) {
+									if (b.behavior.isLastPageIndex(i)) {
+										lastPage = i;
+										break;
+									}
+								}
+								b.jumpTo(lastPage);
+							}
+						}
+					}
+				}
+			}
+		</script>
+		<script src='https://www.google.com/recaptcha/enterprise.js?onload=gCaptchaReadyCallback&render=explicit&hl=en_US' async
+				defer></script>
+						<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				var warning = document.getElementById("javascript-warning");
+				if (warning != null) {
+					warning.parentNode.removeChild(warning);
+				}
+				var oldRecaptchaCheck = parseInt('1');
+				if (oldRecaptchaCheck !== -1) {
+					var explanation = document.getElementById('disabled-explanation');
+					var submitButton = document.getElementById('submit_button');
+					if (submitButton != null) {
+						submitButton.disabled = true;
+						if (explanation != null) {
+							explanation.style.display = 'block';
+						}
+					}
+				}
+			});
+		</script>
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function(){
+				const FORM_TIME_START = Math.floor((new Date).getTime()/1000);
+				let formElement = document.getElementById("tfa_0");
+				if (null === formElement) {
+					formElement = document.getElementById("0");
+				}
+				let appendJsTimerElement = function(){
+					let formTimeDiff = Math.floor((new Date).getTime()/1000) - FORM_TIME_START;
+					let cumulatedTimeElement = document.getElementById("tfa_dbCumulatedTime");
+					if (null !== cumulatedTimeElement) {
+						let cumulatedTime = parseInt(cumulatedTimeElement.value);
+						if (null !== cumulatedTime && cumulatedTime > 0) {
+							formTimeDiff += cumulatedTime;
+						}
+					}
+					let jsTimeInput = document.createElement("input");
+					jsTimeInput.setAttribute("type", "hidden");
+					jsTimeInput.setAttribute("value", formTimeDiff.toString());
+					jsTimeInput.setAttribute("name", "tfa_dbElapsedJsTime");
+					jsTimeInput.setAttribute("id", "tfa_dbElapsedJsTime");
+					jsTimeInput.setAttribute("autocomplete", "off");
+					if (null !== formElement) {
+						formElement.appendChild(jsTimeInput);
+					}
+				};
+				if (null !== formElement) {
+					if(formElement.addEventListener){
+						formElement.addEventListener('submit', appendJsTimerElement, false);
+					} else if(formElement.attachEvent){
+						formElement.attachEvent('onsubmit', appendJsTimerElement);
+					}
+				}
+			});
+		</script>
+		
+		<link href="https://pva.tfaforms.net/dist/form-builder/5.0.0/wforms-layout.css?v=673a8c93ede84a9544a419ff58e16a570a7d3527" rel="stylesheet" type="text/css" />
+		
+		<link href="https://pva.tfaforms.net/uploads/themes/theme-21.css" rel="stylesheet" type="text/css" />
+		<link href="https://pva.tfaforms.net/dist/form-builder/5.0.0/wforms-jsonly.css?v=673a8c93ede84a9544a419ff58e16a570a7d3527" rel="alternate stylesheet" title="This stylesheet activated by javascript" type="text/css" />
+		<script type="text/javascript" src="https://pva.tfaforms.net/wForms/3.11/js/wforms.js?v=673a8c93ede84a9544a419ff58e16a570a7d3527"></script>
+		<script type="text/javascript">
+			wFORMS.behaviors.prefill.skip = false;
+		</script>
+		<script type="text/javascript" src="https://pva.tfaforms.net/wForms/3.11/js/localization-en_US.js?v=673a8c93ede84a9544a419ff58e16a570a7d3527"></script>
+		
+		<div class="w-form">
+			<div class="wFormHeader"></div>
+			<style type="text/css">
+			</style>
+			<div class="">
+				<div class="wForm" dir="ltr" id="12-WRPR">
+					<div class="codesection" id="code-12"></div>
+					<form action="https://pva.tfaforms.net/api_v2/workflow/processor" class="hintsBelow labelsAbove" id="12" method="post" name="12" role="form">
+						<span class="close-informed"><i class="fas fa-times"></i></span>
+						<div class="htmlSection" id="tfa_5">
+							<div class="htmlContent" id="tfa_5-HTML">
+								<h2 style="text-align: left;">STAY INFORMED</h2>
+							</div>
+						</div>
+						<div class="oneField field-container-D" id="tfa_6-D">
+							<input aria-required="true" class="required" id="tfa_7" name="tfa_7" title="First Name" type="text" value="" placeholder="First Name" aria-label="First Name">
+							<input aria-required="true" id="tfa_8" class="required" name="tfa_8" title="Last Name" type="text" value="" placeholder="Last Name" aria-label="Last Name">
+							<input aria-required="true" class="required" id="tfa_6" name="tfa_6" title="Email" type="text" value="" placeholder="Email" aria-label="Email">
+							<div id="google-captcha" style="display: none">
+								<div class="captcha">
+									<div class="oneField">
+										<div class="g-recaptcha" id="g-recaptcha-render-div"></div>
+										<div class="g-captcha-error"></div><br>
+									</div>
+								</div>
+							</div><input class="primaryAction" data-label="Submit" id="submit_button" type="submit" value="Submit">
+						</div>
+						<div style="clear:both"></div><input id="tfa_dbFormId" name="tfa_dbFormId" type="hidden" value="12"><input id="tfa_dbResponseId" name="tfa_dbResponseId" type="hidden" value=""><input id="tfa_dbControl" name="tfa_dbControl" type="hidden" value="a6fbfc4ec3288be3c2fab2fd4fa7bbc1"><input id="tfa_dbWorkflowSessionUuid" name="tfa_dbWorkflowSessionUuid" type="hidden" value=""><input id="tfa_dbVersionId" name="tfa_dbVersionId" type="hidden" value="7"><input id="tfa_switchedoff" name="tfa_switchedoff" type="hidden" value="">
+					</form>
+				</div>
+			</div>
+		</div>
+		@endif
+        
+        @if($_SERVER['REQUEST_URI'] == '/' || $_SERVER['REQUEST_URI'] == "/ways-to-give" || $_SERVER['REQUEST_URI'] == "/ways-to-give/" || strpos($_SERVER['REQUEST_URI'], 'ways-to-give') !== false)
+	
+        <style>
+	        .giving.bottom.fixed {width:100%;position: fixed;bottom:0;transition: ease .3s;display: none; z-index: 999999999;}
+	        .giving.bottom.fixed.fade {opacity: 0;transition: ease .3s;}
+	        .giving.bottom.fixed.show {display: block;}
+	        .giving.bottom.fixed .close-giving {position:absolute;top:10px;right:10px;width:20px;height:20px;text-align: center;border-radius: 20px;background:rgba(255,255,255,.6);font-size: 14px;}
+	        .giving.bottom.fixed .close-giving i {color:white;opacity: .6;position: relative;top:-3px;}
+	        .giving.bottom.fixed .top-part {padding:20px 0;}
+	        .giving.bottom.fixed .top-part p {color:white;font-size:28px;}
+	        .giving.bottom.fixed .bottom-part {background:white;padding:30px 0 30px;}
+	        .giving.bottom.fixed .bottom-part ul {list-style: none;display: flex;flex-wrap: nowrap;padding:0;margin:0;justify-content: center;}
+	        .giving.bottom.fixed .bottom-part ul li:nth-child(2) .btn {background:#b3272d;}
+	        .giving.bottom.fixed .bottom-part ul li:first-child .btn,.giving.bottom.fixed .bottom-part ul li:nth-child(2) .btn,.giving.bottom.fixed .bottom-part ul li:nth-child(3) .btn,.giving.bottom.fixed .bottom-part ul li:nth-child(4) .btn {width: 125px;}
+	        .giving.bottom.fixed .bottom-part ul li {margin-right:10px;}
+	        .giving.bottom.fixed .bottom-part .the-form {display: flex;}
+	        .giving.bottom.fixed .bottom-part .the-form input {margin-right:10px;padding-left:20px;}
+	        @media screen and (max-width: 768px) {
+		        .giving.bottom.fixed .close-giving {top:5px;right:5px;}
+		        .giving.bottom.fixed .bottom-part ul {display: grid;grid-template-columns: 1fr 1fr;grid-gap:10px;}
+		        .giving.bottom.fixed .bottom-part ul li {margin-right:0;width:100%;}
+		        .giving.bottom.fixed .bottom-part ul li .btn {width:100% !important;}
+		        .giving.bottom.fixed .bottom-part .the-form {display: block;grid-column: span 2;}
+		        .giving.bottom.fixed .bottom-part .the-form input {display: none;}
+	        }
+	    </style>
+			@foreach(get_field('home_giving',3045) as $giving)
+			<div id="giving-cta" class="giving bottom fixed wide">
+				<span class="close-giving"><i class="fas fa-times"></i></span>
+				<div class="top-part" style="background:url({{$giving['background_image']}}) center center no-repeat;background-size:cover;">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 text-center">
+								{!!$giving['heading']!!}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="bottom-part">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<ul>
+								@foreach($giving['buttons'] as $button)
+									<li><a href="{{$button['button_url']}}" class="btn btn-large primary-background standard-width white" target="_blank">{{$button['button_text']}}</a></li>
+								@endforeach
+								@if($giving['input_placeholder'] != '' && $giving['submit_text'] != '' && $giving['custom_url'] != '')
+									<li class="the-form">
+										<input placeholder="{{$giving['input_placeholder']}}" class="custom-donation-amount" />
+										<a href="{{$giving['custom_url']}}" class="btn btn-large secondary-background standard-width white custom-donation-url" target="_blank">{{$giving['submit_text']}}</a>
+									</li>
+								@endif
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			@endforeach
+        @endif
+    </body>
+
+</html>

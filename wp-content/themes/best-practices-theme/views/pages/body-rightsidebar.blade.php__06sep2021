@@ -1,0 +1,104 @@
+@extends('views.layouts.main')
+
+@section('content')
+@while (have_posts()) @php the_post() @endphp
+    @if(get_field('full_image_header'))
+    <div class="banner-section banner-full-bg" style="background-image: url({{get_field('full_image_header_image')['url']}});">
+        <div class="container">
+            <div class="text-holder" style="text-align:{{strtolower(get_field('full_header_content_alignment'))}}">
+                {!! get_field('full_header_content') !!}
+            </div>
+        </div>
+    </div>
+    @endif
+    @if(get_field('two_block_header'))  
+    <div class="banner-section banner-{{strtolower(get_field('two_block_header_image_aignment'))}}">
+        @if(strtolower(get_field('two_block_header_image_aignment')) == 'left')
+        <div class="image-band" style="background-image: url({{get_field('two_block_header_image')['url']}});"></div>
+        <div class="text-band primary-background" style="background:{{get_field('two_block_header_background')}}">
+            <div class="text-wrap" style="text-align:{{strtolower(get_field('two_block_header_content_alignment'))}}">
+                {!! get_field('two_block_header_content') !!}
+            </div>
+        </div>
+        @else
+        <div class="text-band primary-background" style="background:{{get_field('two_block_header_background')}}">
+            <div class="text-wrap" style="text-align:{{strtolower(get_field('two_block_header_content_alignment'))}}">
+                {!! get_field('two_block_header_content') !!}
+            </div>
+        </div>
+        <div class="image-band" style="background-image: url({{get_field('two_block_header_image')['url']}});"></div>
+        @endif
+    </div>
+    @endif
+    <main class="main">
+        <div class="container">
+            @include('views.partials.breadcrumbs')
+            <div class="row maincont">
+                <div class="col-md-8 col-sm-12">
+                    {!!get_field('content_area')!!}
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    @if(get_field('show_sidebar_editor'))
+                    <div class="sidebar-widget">
+                        {!!get_field('sidebar_editor')!!}
+                    </div>
+                    @endif
+                    @if(get_field('show_news_feed'))
+                    <div class="sidebar-widget">
+                        <!-- {!!get_field('show_news_feed')!!} -->
+                        <section class="news-area">
+                            <h2 style="color: #000">Recent News</h2>
+                            <div class="news-list">
+                                <a href="#" class="image">
+                                    <span class="icon"><i class="icon-plus-light1"></i></span>
+                                    <img src="{{public_path('images/nvwg-thumbnai.jpg')}}" alt="image-description">
+                                </a>
+                                <div class="description">
+                                    <span class="date">August 10, 2021</span>
+                                    <p><a href="#">Wheelchair Games celebrates 40th anniversary with hybrid sports event </a></p>
+                                </div>
+                            </div>
+                            <div class="news-list">
+                                <a href="#" class="image">
+                                    <span class="icon"><i class="icon-plus-light1"></i></span>
+                                    <img src="{{public_path('images/image5.png')}}" alt="image-description">
+                                </a>
+                                <div class="description">
+                                    <span class="date">June 01, 2021</span>
+                                    <p><a href="#">PVA Elects U.S. Marine Corps Veteran Charles Brown as its New National President  </a></p>
+                                </div>
+                            </div>
+                            <div class="news-list">
+                                <a href="#" class="image">
+                                    <span class="icon"><i class="icon-plus-light1"></i></span>
+                                    <img src="{{public_path('images/image6.jpg')}}" alt="image-description">
+                                </a>
+                                <div class="description">
+                                    <span class="date">May 18, 2021</span>
+                                    <p><a href="#">PVA celebrates 75-year legacy by inviting all Americans to Honor the Spot and keep accessible parking spaces open for the people who need them</a></p>
+                                </div>
+                            </div>
+                            <div class="news-list">
+                                <a href="#" class="image">
+                                    <span class="icon"><i class="icon-plus-light1"></i></span>
+                                    <img src="{{public_path('images/image7.jpg')}}" alt="image-description">
+                                </a>
+                                <div class="description">
+                                    <p><a href="#">PVA Kicks Off PVA Awareness Month with New Video, New Stories of Resiliency, and an Up-Close, Virtual Look Inside its Operations </a></p>
+                                </div>
+                            </div>
+                            <a href="#" class="view"><span>View All</span> <i class="icon icon-arrow-right-solid"></i></a>
+                        </section>
+                    </div>
+                    @endif
+                    @if(get_field('show_sidebar_editor_2'))
+                    <div class="sidebar-widget">
+                        {!!get_field('sidebar_editor_2')!!}
+                    </div>
+                    @endif
+                </div>
+            </div>            
+        </div>
+    </main>
+@endwhile
+@endsection

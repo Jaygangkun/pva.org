@@ -1,0 +1,110 @@
+@extends('views.layouts.main')
+
+@section('content')
+@while (have_posts()) @php the_post() @endphp
+<main class="main">
+    <div class="container">
+        <p>&nbsp;</p>
+        <h1>Paralyzed Veterans of America Blog</h1>
+        <p>&nbsp;</p>
+        <div class="">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="blog-post">                        
+                        <div class="post-listing">
+                            <div class="post-item">
+                                <div class="post-header">
+                                    <h2><a href="/looking-back-2020">A Look Back at 2020</a></h2>
+                                    <div>Posted by <a class="author-link" href="/author/lynne-switzer-staff-writer-for-pva">Lynne Switzer, staff writer for PVA</a> on Dec 29, 2020 10:00:00 AM</div>
+                                </div>
+                                <div class="social-icons">Social Share icons here</div>
+                                <div class="post-body clearfix">
+                                    <!--post summary-->
+                                    <div class="hs-featured-image-wrapper">
+                                        <a href="/looking-back-2020" title="" class="hs-featured-image-link">
+                                        <img src="https://f.hubspotusercontent30.net/hub/5228934/hubfs/GettyImages-1218441116.jpeg?width=710&amp;name=GettyImages-1218441116.jpeg" class="hs-featured-image" alt="A Look Back at 2020">
+                                        </a>
+                                    </div>
+                                </div>
+                                <a class="more-link" href="/looking-back-2020">Read More</a>
+                                <div class="custom_listing_comments">
+                                    0 Comments <a href="https://blog.pva.org/looking-back-2020#comments-listing">Click here to read/write comments</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-post">                        
+                        <div class="post-listing">
+                            <div class="post-item">
+                                <div class="post-header">
+                                    <h2><a href="/looking-back-2020">A Look Back at 2020</a></h2>
+                                    <div>Posted by <a class="author-link" href="/author/lynne-switzer-staff-writer-for-pva">Lynne Switzer, staff writer for PVA</a> on Dec 29, 2020 10:00:00 AM</div>
+                                </div>
+                                <div class="social-icons">Social Share icons here</div>
+                                <div class="post-body clearfix">
+                                    <!--post summary-->
+                                    <div class="hs-featured-image-wrapper">
+                                        <a href="/looking-back-2020" title="" class="hs-featured-image-link">
+                                        <img src="https://f.hubspotusercontent30.net/hub/5228934/hubfs/GettyImages-1218441116.jpeg?width=710&amp;name=GettyImages-1218441116.jpeg" class="hs-featured-image" alt="A Look Back at 2020">
+                                        </a>
+                                    </div>
+                                </div>
+                                <a class="more-link" href="/looking-back-2020">Read More</a>
+                                <div class="custom_listing_comments">
+                                    0 Comments <a href="https://blog.pva.org/looking-back-2020#comments-listing">Click here to read/write comments</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-post">                        
+                        <div class="post-listing">
+                            <div class="post-item">
+                                <div class="post-header">
+                                    <h2><a href="/looking-back-2020">A Look Back at 2020</a></h2>
+                                    <div>Posted by <a class="author-link" href="/author/lynne-switzer-staff-writer-for-pva">Lynne Switzer, staff writer for PVA</a> on Dec 29, 2020 10:00:00 AM</div>
+                                </div>
+                                <div class="social-icons">Social Share icons here</div>
+                                <div class="post-body clearfix">
+                                    <!--post summary-->
+                                    <div class="hs-featured-image-wrapper">
+                                        <a href="/looking-back-2020" title="" class="hs-featured-image-link">
+                                        <img src="https://f.hubspotusercontent30.net/hub/5228934/hubfs/GettyImages-1218441116.jpeg?width=710&amp;name=GettyImages-1218441116.jpeg" class="hs-featured-image" alt="A Look Back at 2020">
+                                        </a>
+                                    </div>
+                                </div>
+                                <a class="more-link" href="/looking-back-2020">Read More</a>
+                                <div class="custom_listing_comments">
+                                    0 Comments <a href="https://blog.pva.org/looking-back-2020#comments-listing">Click here to read/write comments</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="news-area">                        
+                        <div class="sidebar-widget">
+                            @if(get_field('sidebar_editor','options'))
+                                {!!get_field('sidebar_editor','options')!!}
+                            @endif
+                        </div>
+                        <div class="sidebar-widget">
+                            @if(get_field('show_recent_posts','options'))
+                                @include('views.partials.recent-posts')
+                            @endif
+                        </div>
+                        <div class="sidebar-widget">
+                            @if(get_field('show_tags','options'))
+                                @include('views.partials.tags')
+                            @endif
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endwhile
+@endsection

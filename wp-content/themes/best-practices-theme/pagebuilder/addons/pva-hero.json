@@ -1,0 +1,279 @@
+[{
+	"id": 1630619302497,
+	"visibility": true,
+	"collapse": false,
+	"settings": {
+		"row_padding": {
+			"md": {
+				"top": "25px",
+				"bottom": "25px",
+				"left": "0px",
+				"right": "0px"
+			}
+		},
+		"row_screen": "row-stretch",
+		"row_opacity": 0.4
+	},
+	"layout": "100",
+	"columns": [{
+		"id": 1630619302496,
+		"class_name": 100,
+		"visibility": true,
+		"settings": {
+			"col_custom_width": {
+				"md": "100",
+				"sm": 100,
+				"xs": 100
+			}
+		},
+		"addons": [{
+			"id": 1630621298058,
+			"name": "wppb_carousel",
+			"visibility": true,
+			"settings": {
+				"arrow_option": "1",
+				"control_option": "1",
+				"autoplay_option": "1",
+				"animated_speed": "600",
+				"slide_height": {
+					"md": "310px",
+					"sm": "",
+					"xs": ""
+				},
+				"carosuel_list": [{
+					"title": "COVID-19",
+					"subtitle": "News & Articles",
+					"content": "",
+					"slider_type": "center_content",
+					"media_type": "media_image",
+					"imageupload": "",
+					"video_url": "https://www.youtube.com/watch?v=EKDZ7pvNSLs",
+					"intro_color": "#656565",
+					"button_text": "",
+					"button_link": {
+						"link": "",
+						"window": false,
+						"nofolow": false
+					},
+					"btn_color": "#fff",
+					"btn_hover_color": "#fff",
+					"slide_height": {
+						"md": "600px",
+						"sm": "",
+						"xs": ""
+					},
+					"title_color": "#FFF",
+					"subtitle_color": "#ffffff",
+					"carosuel_bg": {
+						"bgType": "image",
+						"bgColor": "#fff",
+						"bgImage": {
+							"id": 91,
+							"url": "https://pva4.stage.demotesturl.net/wp-content/uploads/2021/09/covid-hero-final.jpg",
+							"size": "full"
+						},
+						"bgimgPosition": "",
+						"bgimgAttachment": "",
+						"bgimgRepeat": "",
+						"bgimgSize": "cover",
+						"bgDefaultColor": "",
+						"bgGradient": {},
+						"videoType": "local",
+						"bgVideo": {},
+						"bgExternalVideo": "",
+						"bgVideoFallback": {},
+						"bgHoverType": "color",
+						"bgHoverColor": "",
+						"bgHoverImage": {},
+						"bgHoverimgPosition": "",
+						"bgHoverimgAttachment": "",
+						"bgimgHoverRepeat": "",
+						"bgimgHoverSize": "",
+						"bgHoverDefaultColor": "",
+						"bgHoverGradient": {}
+					},
+					"btn_background": {
+						"colorType": "color",
+						"colorColor": "#26c266",
+						"colorGradient": {},
+						"clip": false
+					},
+					"btn_hover_background": {
+						"colorType": "color",
+						"colorColor": "#1fa957",
+						"colorGradient": {},
+						"clip": false
+					},
+					"btn_radius": {
+						"md": "3px",
+						"sm": "",
+						"xs": ""
+					},
+					"btn_padding": {
+						"md": {
+							"top": "8px",
+							"right": "25px",
+							"bottom": "8px",
+							"left": "25px"
+						},
+						"sm": {
+							"top": "",
+							"right": "",
+							"bottom": "",
+							"left": ""
+						},
+						"xs": {
+							"top": "",
+							"right": "",
+							"bottom": "",
+							"left": ""
+						}
+					},
+					"button_link2": {
+						"link": "",
+						"window": 0,
+						"nofolow": 0
+					},
+					"btn_background2": {
+						"colorType": "color",
+						"colorColor": "",
+						"colorGradient": {},
+						"clip": false
+					},
+					"btn_hover_background2": {
+						"colorType": "color",
+						"colorColor": "",
+						"colorGradient": {},
+						"clip": false
+					}
+				}],
+				"nav_color": "#fff",
+				"nav_bg": {
+					"colorType": "color",
+					"colorColor": "#252525",
+					"colorGradient": {},
+					"clip": false
+				},
+				"nav_width": {
+					"md": "40px",
+					"sm": "",
+					"xs": ""
+				},
+				"nav_height": {
+					"md": "40px",
+					"sm": "",
+					"xs": ""
+				},
+				"nav_radius": {
+					"md": {
+						"top": "2px",
+						"right": "2px",
+						"bottom": "2px",
+						"left": "2px"
+					},
+					"sm": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					},
+					"xs": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					}
+				},
+				"nav_position": {
+					"md": "50%",
+					"sm": "",
+					"xs": ""
+				},
+				"dot_bg": {
+					"colorType": "color",
+					"colorColor": "#3666E4",
+					"colorGradient": {},
+					"clip": false
+				},
+				"dots_width": {
+					"md": "40px",
+					"sm": "",
+					"xs": ""
+				},
+				"dots_height": {
+					"md": "5px",
+					"sm": "",
+					"xs": ""
+				},
+				"dots_radius": {
+					"md": {
+						"top": "2px",
+						"right": "2px",
+						"bottom": "2px",
+						"left": "2px"
+					},
+					"sm": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					},
+					"xs": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					}
+				},
+				"dots_position": {
+					"md": "35px",
+					"sm": "",
+					"xs": ""
+				},
+				"content_padding": {
+					"md": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					},
+					"sm": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					},
+					"xs": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					}
+				},
+				"content_margin": {
+					"md": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					},
+					"sm": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					},
+					"xs": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					}
+				},
+				"id": 1630621298058
+			},
+			"htmlContent": "<div id=\"wppb-addon-1630621298058\" class=\"clearfix\" ></div>",
+			"type": "addon"
+		}]
+	}]
+}]
