@@ -48,6 +48,18 @@
                                             {{$document_title}}
                                         </a>
                                     </h2>
+                                    @php
+                                    $buy_this_cpg_link = get_sub_field('buy_this_cpg_link');
+                                    $cpg_link = get_sub_field('cpg_link');
+
+                                    if($buy_this_cpg_link && $cpg_link) {
+                                      @endphp
+                                      <div style="margin-bottom: 10px;">
+                                        <a href="{!! $cpg_link !!}" target="_blank" class="btn btn-medium secondary-background standard-width white">Buy this CPG</a>
+                                      </div>
+                                      @php
+                                    }
+                                    @endphp
                                     <a href="{!! $document !!}" target="_blank">Download PDF</a>
                                 </div>
                             @endwhile
