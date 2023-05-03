@@ -41,10 +41,12 @@
                                     $document = $documentFile;
                                 }
                                 
+                                $title_url = get_sub_field('title_url');
+
                                 @endphp
                                 <div class="article-summary-content search publication">
                                     <h2>
-                                        <a href="{!! $document !!}" target="_blank">
+                                        <a href="{!! $title_url !!}" target="_blank">
                                             {{$document_title}}
                                         </a>
                                     </h2>
